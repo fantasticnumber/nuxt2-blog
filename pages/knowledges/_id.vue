@@ -1,5 +1,5 @@
 <template>
-  <div class="knowledge-detail">
+  <div class="knowledges-detail">
     <div class="captain flexc w100" v-viewer>
       <div class="info">
         <lazy-img :src="item.cover" alt="cover" :size="['150px', '250px']" viewer/>
@@ -37,7 +37,6 @@
 
 <script>
 import '~/assets/style/markdown.scss';
-import 'highlight.js/styles/github.css';
 import {knowledgeList} from "~/utils/data";
 import {cloneDeep} from "lodash/lang";
 import bookDivide from '~/assets/image/book-divide.png';
@@ -74,22 +73,22 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @use "sass:math";
 @import "assets/style/var";
 
-.knowledge-detail{
+.knowledges-detail{
   margin: 0 15px 80px 15px;
   .captain{
     margin: auto;
     position: relative;
     width: 900px;
-    .info {
+    >.info {
       margin: 40px 0 20px 0;
       padding-bottom: 20px;
       position: relative;
       display: flex;
-      ::v-deep .--lazy-img{
+      .--lazy-img{
         flex-shrink: 0;
         border: 1px solid #919191;
         box-shadow: 0 0 16px #4f4f4f;
@@ -134,7 +133,7 @@ export default {
         }
       }
     }
-    .divider {
+    >.divider {
       width: 100%;
       height: 0;
       overflow: visible;
@@ -300,10 +299,10 @@ export default {
         }
       }
     }
-    article {
+    >article {
       width: 800px;
     }
-    .modify {
+    >.modify {
       font-size: 12px;
       margin-left: auto;
       margin-top: 40px;
@@ -312,16 +311,16 @@ export default {
   }
 }
 @include mobile{
-  .knowledge-detail {
+  .knowledges-detail {
     width: 100%;
     margin: 0 0 80px 0;
     .captain {
       width: calc(100% - 20px) !important;
       max-width: unset;
       min-width: unset;
-      .info {
+      >.info {
         flex-direction: column;
-        ::v-deep .--lazy-img{
+        .--lazy-img{
           margin-bottom: 30px;
           width: 60%;
           img {
@@ -343,7 +342,7 @@ export default {
           }
         }
       }
-      article {
+      >article {
         width: 100%;
       }
     }

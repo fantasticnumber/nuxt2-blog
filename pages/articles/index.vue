@@ -79,7 +79,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "assets/style/var";
 .article-list{
   width: 800px;
@@ -90,7 +90,7 @@ export default {
     align-self: stretch;
     .tags{
       flex-wrap: wrap;
-      ::v-deep .tag {
+      .common-tag {
         margin: 0 10px 10px 0;
       }
     }
@@ -112,16 +112,16 @@ export default {
       list-style: none;
       li{
         &:not(:last-of-type){
-          margin-bottom: 10px;
+          margin-bottom: 16px;
         }
         > a{
           border-bottom: 1px solid #e1e1e1;
-          padding: 8px 0 8px 8px;
+          padding: 8px 0 12px 8px;
         }
         &:hover{
           > a{
             b{
-              color: $title-color-hover;
+              text-decoration: underline;
             }
             .foot{
               color: $footer-hover;

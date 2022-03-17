@@ -1,5 +1,5 @@
 <template>
-  <div class="knowledge-detail">
+  <div class="article-detail">
     <div class="captain flex w100" :class="{'no-menu': !menu.length}">
       <div class="article-container">
         <h2>{{item.title}}</h2>
@@ -22,7 +22,6 @@
 
 <script>
 import '~/assets/style/markdown.scss';
-import 'highlight.js/styles/github.css';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import {articleList} from "~/utils/data";
 import {cloneDeep} from "lodash/lang";
@@ -122,9 +121,10 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "assets/style/var";
-.knowledge-detail{
+
+.article-detail{
   $min-article-size: 500px;
   $menu-size: 240px;
   $menu-margin: 20px;
@@ -134,19 +134,19 @@ export default {
     position: relative;
     max-width: 1050px;
     min-width: $min-article-size + $menu-size + $menu-margin;
-    h2 {
-      margin: 30px 0 40px 0;
-      text-align: center;
-      color: #1d1d1d;
-      word-break: break-word;
-      letter-spacing: .5px;
-      font-family: $font-title;
-    }
-    .article-container{
+    >.article-container{
       position: relative;
       width: 880px;
       min-width: $min-article-size;
       margin: 0 $menu-size + $menu-margin 0 20px;
+      >h2 {
+        margin: 30px 0 40px 0;
+        text-align: center;
+        color: #1d1d1d;
+        word-break: break-word;
+        letter-spacing: .5px;
+        font-family: $font-title;
+      }
       article{
         position: relative;
         z-index: 2;
@@ -154,14 +154,14 @@ export default {
     }
     &.no-menu {
       width: $min-article-size + $menu-size + $menu-margin;
-      .article-container {
+      >.article-container {
         margin: 0 auto;
       }
       ~ .more-info {
         margin-right: 20px;
       }
     }
-    .menu{
+    >.menu{
       position: absolute;
       top: 0;
       right: 0;
@@ -275,19 +275,19 @@ export default {
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1050px) {
-  .knowledge-detail {
+  .article-detail {
     width: 100%;
     .captain {
-      width: 100% !important;
+      width: 100vw !important;
       max-width: unset;
       min-width: unset;
-      .article-container {
+      >.article-container {
         width: calc(100% - 120px);
         max-width: unset;
         min-width: unset;
         margin: 0 60px;
       }
-      .menu {
+      >.menu {
         display: none;
         ul{
           display: none;
@@ -307,19 +307,19 @@ export default {
   }
 }
 @include mobile {
-  .knowledge-detail {
+  .article-detail {
     width: 100%;
     .captain {
       width: 100% !important;
       max-width: unset;
       min-width: unset;
-      .article-container {
+      >.article-container {
         width: calc(100% - 20px);
         max-width: unset;
         min-width: unset;
         margin: 0 10px;
       }
-      .menu {
+      >.menu {
         display: none;
         ul{
           display: none;

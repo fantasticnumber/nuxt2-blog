@@ -54,7 +54,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "assets/style/var";
 .record-list{
   margin: 20px 30px 20px 40px;
@@ -115,7 +115,7 @@ export default {
             width: 156px;
             height: 156px;
             transition: $common-transition;
-            ::v-deep .--lazy-img{
+            .--lazy-img{
               z-index: 3;
               span {
                 border: 1px solid #dedede;
@@ -128,11 +128,11 @@ export default {
               }
             }
             &:hover{
-              &::v-deep .--lazy-img{
+              .--lazy-img{
                 transform: translate(-2px, -2px);
               }
             }
-            &:before, &:after, ::v-deep .--lazy-img{
+            &:before, &:after, .--lazy-img{
               position: absolute;
               top: 0;
               left: 0;

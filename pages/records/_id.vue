@@ -8,7 +8,7 @@
         <svg-icon name="write"/>
         <time>{{ item.time | time }}</time>
       </p>
-      <span v-html="text"></span>
+      <article class="--markdown" v-html="text"></article>
     </div>
   </div>
 </template>
@@ -26,18 +26,16 @@ export default {
   async asyncData({params}) {
     const id = parseInt(params.id);
     const item = recordList.find(record => record.id === id);
-    const text = (await import(`!!raw-loader!~/rebuild/records/${id}.txt`)).default;
+    const text = (await import(`!!raw-loader!~/rebuild/records/${id}.html`)).default;
     return {
       item: cloneDeep(item),
       text
     }
   },
-  methods: {
-  }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "assets/style/var";
 .record-detail{
   margin: 30px 20px 80px 20px;
@@ -45,7 +43,7 @@ export default {
   .images {
     display: flex;
     flex-wrap: wrap;
-    ::v-deep img {
+    img {
       margin: 0 10px 10px 0;
       max-width: 600px;
       max-height: 300px;
@@ -53,7 +51,7 @@ export default {
   }
   .text{
     margin-top: 10px;
-    p {
+    > p {
       border-bottom: 1px solid #b9b9b9;
       svg {
         width: 16px;
@@ -64,15 +62,8 @@ export default {
         line-height: 16px;
       }
     }
-    span{
-      font-size: 15px;
-      letter-spacing: .5px;
-      line-height: 28px;
-      font-family: $font-source-han-sans;
+    article{
       padding: 8px;
-      display: block;
-      word-break: break-word;
-      white-space: pre-line;
     }
   }
 }
